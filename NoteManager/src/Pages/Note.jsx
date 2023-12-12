@@ -1,5 +1,5 @@
-import  "../styles/Note.css"
+import style from "../styles/note.module.css";
 
-export function Note({note}) {
-    return <></>
+export default function Note({note}) {
+    return <>Note</>
 }

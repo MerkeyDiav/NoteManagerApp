@@ -1,4 +1,4 @@
-import "../styles/PageNotFound.css";
+import style from "../styles/PageNotFound.module.css";
 
 import React from 'react'
 

@@ -1,10 +1,10 @@
 import React from 'react'
-import "../styles/NoteBrowse.css"; 
+import style from "../styles/NoteBrowse.module.css"
 
 function NoteBrowse() {
   return (
     <div>
-      
+      Note Browse
     </div>
   )
 }
