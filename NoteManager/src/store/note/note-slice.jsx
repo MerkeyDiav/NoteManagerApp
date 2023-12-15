@@ -7,7 +7,7 @@ export const noteSlice = createSlice({
     },
     reducers: {
         setNoteList: (currentSlice, action) => {
-            currentSlice.   noteList = action.payload;
+            currentSlice.noteList = action.payload;
         },
     }
 })

@@ -7,10 +7,15 @@ import { setNoteList } from "./store/note/note-slice";
 import { useEffect } from "react";
 
 const App = () => {
+
   const dispatch = useDispatch()
   async function fetchAllNotes(){
-    const noteList = await NoteApi.fetchAll();
-    dispatch(setNoteList(noteList))
+   try {
+      const noteList = await NoteApi.fetchAll();
+      dispatch(setNoteList(noteList))
+   }catch (error){
+    console.log(error)
+   }
   }
 
   useEffect(() => {

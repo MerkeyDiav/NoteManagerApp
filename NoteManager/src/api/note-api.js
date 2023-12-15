@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "https://localhost:3200/notes";
+const BASE_URL = "http://localhost:3200/notes";
 
 export class NoteApi {
     static async create(note){
