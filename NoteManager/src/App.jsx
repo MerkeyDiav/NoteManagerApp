@@ -5,6 +5,7 @@ import { NoteApi } from "./api/note-api";
 import {useDispatch} from "react-redux"
 import { setNoteList } from "./store/note/note-slice";
 import { useEffect } from "react";
+import style from "./index.module.css"
 
 const App = () => {
 
@@ -26,7 +27,7 @@ const App = () => {
     <>
       <div className="container-fluid">
         <Header />
-        <Outlet />
+        <Outlet style={style.container} />
       </div>
     </>
   )
