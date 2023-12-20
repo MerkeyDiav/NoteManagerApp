@@ -16,14 +16,14 @@ const VALIDATORS = {
 }
 export const NoteForm = ({
     note, 
-    isEditable=true, 
+    isEditable= true, 
     title, 
     onSubmit, 
     onClickEdit, 
     onClickTrash}) => {
 
-    const [formValues, setFormValues] = useState({title:"", content:""});
-    const [formError, setFormError] = useState({title:"", content: ""})
+    const [formValues, setFormValues] = useState({title: note?. title || " ", content: note?. content || ""});
+    const [formError, setFormError] = useState({title: note?. title? undefined : "", content:note?. content? undefined : ""})
 
     function hasError(){
       return Object.values(formError).some((error) => error != undefined)
@@ -33,7 +33,6 @@ export const NoteForm = ({
       setFormValues({...formValues, [e.target.name]: e.target.value})
       validate(e.target.name, e.target.value)
     }
-    console.log(formError)
     function validate(fieldName, fieldValue){
       setFormError({...formError, [fieldName]: VALIDATORS[fieldName](fieldValue)})
     }
@@ -58,6 +57,7 @@ export const NoteForm = ({
         onChange={updateFormValue}
         name="title" 
         className='form-control'
+        value={formValues.title}
         />
         <FieldError msg={formError.title}/>
     </div>
@@ -71,7 +71,9 @@ export const NoteForm = ({
         name="content" 
         className='form-control' 
         onChange={updateFormValue}
-        rows="5"/>
+        value={formValues.content}
+        rows="5"
+        />
         <FieldError msg={formError.content}/>
     </div>
     )

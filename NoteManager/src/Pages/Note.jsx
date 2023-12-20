@@ -1,20 +1,30 @@
-import style from "../styles/note.module.css";
 import { useParams } from "react-router-dom";
-import {useSelector} from "react-redux";
+import {useSelector, useDispatch} from "react-redux";
 import { NoteForm } from "./NoteForm";
+import {useState} from "react";
+import { NoteApi } from '../api/note-api';
+import { updateNote } from '../store/note/note-slice';
 
 export default function Note() {
+    const [isEditable, setIsEditable] = useState(false);
     const {noteId} = useParams();
+    const dispatch = useDispatch();
+
     const note = useSelector(store => store.NOTE.noteList.find(note => note.id == noteId))
-    console.log(note)
+    async function submit(formValues){
+        const updatedNote = await NoteApi.update({...formValues, id:noteId});
+        dispatch(updatedNote(updateNote))
+        setIsEditable(false)
+    }
     return <>
     {note && (
         <NoteForm 
-            isEditable={false} 
+            isEditable={isEditable} 
             note={note}
-            title={note.title} 
-            onClickEdit={()=>{}}
+            title={isEditable? "Edit note" : note.title} 
+            onClickEdit={()=>setIsEditable(!isEditable)}
             onClickTrash={()=>{}}
+            onSubmit={isEditable && submit}
             />)}
     </>
 }
