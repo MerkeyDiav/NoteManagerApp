@@ -1,10 +1,15 @@
 import { useParams } from "react-router-dom";
 import {useSelector, useDispatch} from "react-redux";
-import { NoteForm } from "./NoteForm";
 import {useState} from "react";
+import { NoteForm } from "./NoteForm";
 import { NoteApi } from '../api/note-api';
 import { updateNote } from '../store/note/note-slice';
 
+/**
+ * @function Note
+ * @return NoteForm
+ * 
+ */
 export default function Note() {
     const [isEditable, setIsEditable] = useState(false);
     const {noteId} = useParams();
